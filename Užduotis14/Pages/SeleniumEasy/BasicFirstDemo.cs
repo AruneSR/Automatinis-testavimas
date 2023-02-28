@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleniumTestai
+namespace Užduotis14.Pages.SeleniumEasy
 {
-    public class Class1
+    internal class BasicFirstDemo
     {
     }
 }
