@@ -14,24 +14,35 @@ namespace SeleniumTestai.SeleniumEasy
         [Test]
         public void FormWithValidData()
         {
-            Driver.SetupDriver();
-            Driver.OpenUrl = ("https://demoqa.com/text-box");
+            
 
             string valueFullName = "Tester";
             string valueEmail = "test@tester.com";
             string valueCurrentAddress = "Test Address";
             string valuePermanentAddress = "Test Address 2";
 
-            IWebElement inputFullName = driver.FindElement(By.XPath("//*[@id='userName']"));
-            IWebElement inputEmail = driver.FindElement(By.XPath("//*[@id='userEmail']"));
+
+            Driver.SetupDriver();
+            Driver.OpenUrl("https://demoqa.com/text-box");
+            BasicFirstDemo.EnterFullName(valueFullName);
+            BasicFirstDemo.EnterEmail(valueEmail);
+
             IWebElement inputCurrentAddress = driver.FindElement(By.XPath("//*[@id='currentAddress']"));
             IWebElement inputPermanentAddress = driver.FindElement(By.XPath("//*[@id='permanentAddress']"));
             IWebElement buttonSubmit = driver.FindElement(By.XPath("//*[@id='submit']"));
 
-            inputFullName.SendKeys(valueFullName);
+           
             inputEmail.SendKeys(valueEmail);
             inputCurrentAddress.SendKeys(valueCurrentAddress);
             inputPermanentAddress.SendKeys(valuePermanentAddress);
+
+            
+            Commmon.EnterEmail
+
+
+
+          
+
 
             driver.ExecuteJavaScript("window.scrollBy(0, 200)");
             buttonSubmit.Click();
@@ -40,6 +51,8 @@ namespace SeleniumTestai.SeleniumEasy
             IWebElement outputEmail = driver.FindElement(By.XPath("//*[@id='output']//*[@id='email']"));
             IWebElement outputCurrentAddress = driver.FindElement(By.XPath("//*[@id='output']//*[@id='currentAddress']"));
             IWebElement outputPermanentAddress = driver.FindElement(By.XPath("//*[@id='output']//*[@id='permanentAddress']"));
+
+            Driver.QuitDriver();
 
             Assert.AreEqual($"Name:{valueFullName}", outputFullName.Text);
             Assert.AreEqual($"Email:{valueEmail}", outputEmail.Text);
